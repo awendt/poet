@@ -1,0 +1,5 @@
+Lost in a long list of host stanzas in your ssh_config?
+
+Fear not -- divide them up into several smaller files under $HOME/.ssh/config.d/ and run 'ssh-confgen' to concatenate them into a single ssh_config.
+
+Stanzas under $HOME/.ssh/config.d/ with an extension of .disabled are ignored by ssh-confgen. Every now and then, when you do need them, you just remove the extension and run 'ssh-confgen' again.
