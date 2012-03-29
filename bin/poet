@@ -33,9 +33,9 @@ if !File.directory?(CONF_DIR)
 end
 
 if File.exists?(SSH_CONFIG) && File.new(SSH_CONFIG).gets == "#{MAGIC_LINE}\n"
-  puts "Found generated ssh_config under $SSH_CONFIG. Overwriting..."
+  puts "Found generated ssh_config under #{SSH_CONFIG}. Overwriting..."
 elsif File.exists?(SSH_CONFIG)
-  puts "Found hand-crafted ssh_config under $SSH_CONFIG. Please move it out of the way."
+  puts "Found hand-crafted ssh_config under #{SSH_CONFIG}. Please move it out of the way."
   Process.exit!(2)
 end
 
