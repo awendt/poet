@@ -1,5 +1,9 @@
 master
 
+- testing with Aruba
+
+- new CLI options --output and --dir
+
 - Dropped CLI option --only
 
 0.0.1
