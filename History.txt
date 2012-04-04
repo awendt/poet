@@ -1,3 +1,7 @@
+master
+
+- Dropped CLI option --only
+
 0.0.1
 
 - Initial release as gem
