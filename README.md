@@ -1,11 +1,26 @@
 [![Build Status](https://secure.travis-ci.org/awendt/poet.png)](http://travis-ci.org/awendt/poet)
 
-Lost in a long list of host stanzas in your `$HOME/.ssh/config`?
+# Wanna to split up your longish `~/.ssh/config` into several files?
 
-Fear not -- divide them up into several smaller files under `$HOME/.ssh/config.d/` and run `poet` to concatenate them into a single ssh_config.
+1. `gem install poet`
+2. `mkdir ~/.ssh/config.d/`
+3. Divide your `ssh_config` into several smaller files in the directory you just created
+4. Run `poet` to concatenate them into a single ssh_config
 
-`poet` does not overwrite your existing ssh_config. If you want to play with it, move your existing config out of the way.
+Add host stanzas to new files or existing ones and re-run `poet`.
 
-Stanzas under `$HOME/.ssh/config.d/` with an extension of .disabled are ignored by poet. Every now and then, when you do need it, run `poet --with CONFIG` to explicitly include `CONFIG.disabled` in your generated ssh_config. You can even include several by running several '--with' options or using `--with CONFIG1,CONFIG2`.
+Poet won't touch your existing ssh_config.
+If you want to play with it, pass a different filename to the "-o" option.
+Or move your existing config out of the way.
 
-If you only want an ssh_config from certain files, use `--only CONFIG` or `--only CONFIG1,CONFIG2`.
+Stanzas under `~/.ssh/config.d/` with an extension of .disabled are ignored by Poet.
+Every now and then, when you do need it, run `poet --with CONFIG` to explicitly include
+`CONFIG.disabled` in your generated ssh_config. You can even include several by running several
+`--with` options or using `--with CONFIG1,CONFIG2`.
+
+## Note on Patches/Pull Requests
+
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a future version unintentionally.
+* Send me a pull request. Bonus points for topic branches.
