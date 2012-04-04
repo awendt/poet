@@ -1,6 +1,6 @@
 [![Build Status](https://secure.travis-ci.org/awendt/poet.png)](http://travis-ci.org/awendt/poet)
 
-# Wanna to split up your longish `~/.ssh/config` into several files?
+# Wanna split up your `~/.ssh/config` into several files?
 
 1. `gem install poet`
 2. `mkdir ~/.ssh/config.d/`
