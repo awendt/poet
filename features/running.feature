@@ -1,4 +1,4 @@
-Feature: Exit code
+Feature: Running the program
   Scenario: Program runs fine
     Given a file named "test" with:
     """
