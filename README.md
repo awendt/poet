@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/awendt/poet.png)](http://travis-ci.org/awendt/poet)
+
 Lost in a long list of host stanzas in your `$HOME/.ssh/config`?
 
 Fear not -- divide them up into several smaller files under `$HOME/.ssh/config.d/` and run `poet` to concatenate them into a single ssh_config.
