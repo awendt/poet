@@ -40,7 +40,7 @@ end
 if File.exists?(options[:ssh_config]) && File.new(options[:ssh_config]).gets == "#{MAGIC_LINE}\n"
   puts "Found generated ssh_config under #{options[:ssh_config]}. Overwriting..."
 elsif File.exists?(options[:ssh_config])
-  $stderr.puts "Found hand-crafted ssh_config under #{options[:ssh_config]}. Please move it out of the way."
+  $stderr.puts "Found hand-crafted ssh_config under #{options[:ssh_config]}. Please move it out of the way or specify a different output file with the -o option."
   Process.exit!(2)
 end
 
