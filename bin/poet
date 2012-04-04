@@ -33,7 +33,7 @@ end
 optparse.parse!
 
 if !File.directory?(options[:dir])
-  puts "#{options[:dir]} does not exist or is not a directory"
+  $stderr.puts "#{options[:dir]} does not exist or is not a directory"
   Process.exit!(1)
 end
 
