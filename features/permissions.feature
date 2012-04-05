@@ -6,5 +6,4 @@ Feature: Correct permissions
       User whatever
     """
     When I run `poet --dir . -o ssh_config`
-    And I run `ls -la ssh_config`
     Then the file "ssh_config" should not be world-accessible
