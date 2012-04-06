@@ -31,4 +31,4 @@ optparse = OptionParser.new do|opts|
 end
 optparse.parse!
 
-Poet.application.run(options)
+Poet.application(options).run

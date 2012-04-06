@@ -6,15 +6,21 @@ module Poet
 
   class << self
 
-    def application
-      @application ||= Poet::Application.new
+    def application(options={})
+      @application ||= Poet::Application.new(options)
     end
         
   end
 
   class Application
 
-    def run(options={})
+    attr_reader :options
+
+    def initialize(options={})
+      @options = options
+    end
+
+    def run
       if !File.directory?(options[:dir])
         $stderr.puts "#{options[:dir]} does not exist or is not a directory"
         Process.exit!(1)
