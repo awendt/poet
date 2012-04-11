@@ -4,10 +4,10 @@ require 'optparse'
 require 'poet'
 
 options = {
-  :ssh_config => File.expand_path('~/.ssh/config'),
+  :ssh_config => ENV['POET_OUTPUT'] || File.expand_path('~/.ssh/config'),
   :verbose => false,
   :with => [],
-  :dir => File.expand_path('~/.ssh/config.d')
+  :dir => ENV['POET_GLOBDIR'] || File.expand_path('~/.ssh/config.d')
 }
 
 optparse = OptionParser.new do|opts|

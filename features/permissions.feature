@@ -5,5 +5,5 @@ Feature: Correct permissions
     Host permissio.ns
       User whatever
     """
-    When I run `poet --dir . -o ssh_config`
+    When I run `poet`
     Then the file "ssh_config" should not be world-accessible

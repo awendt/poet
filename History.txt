@@ -1,5 +1,7 @@
 master
 
+- options: Use env var POET_OUTPUT in addition to --output and POET_GLOBDIR in addition to --dir
+
 - bootstrapping support
 
 0.2

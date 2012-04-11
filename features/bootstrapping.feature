@@ -8,7 +8,7 @@ Feature: Bootstrapping
     Host *.amazonaws.com
       StrictHostKeyChecking no
     """
-    When I run `poet --bootstrap ssh_config --dir ./config.d -o ssh_config`
+    When I run `poet --bootstrap --dir ./config.d`
     Then the exit status should be 0
     And a directory named "config.d" should exist
     And a file named "config.d/ssh_config" should exist
@@ -24,8 +24,8 @@ Feature: Bootstrapping
     Host *.amazonaws.com
       StrictHostKeyChecking no
     """
-    When I run `poet --bootstrap ssh_config --dir ./config.d -o ssh_config`
+    When I run `poet --bootstrap --dir ./config.d`
     Then the exit status should be 0
-    When I run `poet --bootstrap ssh_config --dir ./config.d -o ssh_config`
-    Then the output from "poet --bootstrap ssh_config --dir ./config.d -o ssh_config" should contain "You're already good to go"
+    When I run `poet --bootstrap --dir ./config.d`
+    Then the output from "poet --bootstrap --dir ./config.d" should contain "You're already good to go"
     And the exit status should not be 0
