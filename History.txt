@@ -1,5 +1,9 @@
 master
 
+- bootstrapping support
+
+0.2
+
 - testing with Aruba
 
 - new CLI options --output and --dir

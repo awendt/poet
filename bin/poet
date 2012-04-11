@@ -24,6 +24,9 @@ optparse = OptionParser.new do|opts|
   opts.on('-v', '--verbose', 'Be verbose') do
     options[:verbose] = true
   end
+  opts.on('--bootstrap [FILE]', '') do |file|
+    options[:bootstrap] = File.expand_path(file || options[:ssh_config])
+  end
   opts.on('-w', '--with CONFIG', 'Include an otherwise disabled config file') do |file|
     options[:with] += file.split(',')
     options[:with].each{|file| puts "Including #{file} even if disabled..."}

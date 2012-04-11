@@ -20,7 +20,14 @@ module Poet
       @options = options
     end
 
+    def bootstrap
+      FileUtils.mkdir_p(options[:dir])
+      FileUtils.mv(options[:bootstrap], options[:dir])
+    end
+
     def run
+      bootstrap if options.has_key?(:bootstrap)
+
       if !File.directory?(options[:dir])
         $stderr.puts "#{options[:dir]} does not exist or is not a directory"
         Process.exit!(1)

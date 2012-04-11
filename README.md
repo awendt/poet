@@ -3,11 +3,8 @@
 # Wanna split up your `~/.ssh/config` into several files?
 
 1. `gem install poet`
-2. `mkdir ~/.ssh/config.d/`
-3. Divide your `ssh_config` into several smaller files in the directory you just created
-4. Run `poet` to concatenate them into a single ssh_config
-
-Add host stanzas to new files or existing ones and re-run `poet`.
+2. `poet --bootstrap`
+3. Organize files in `~/.ssh/config.d/ssh_config` any way you want. Just remember to re-run `poet` afterwards.
 
 Poet won't touch your existing ssh_config.
 If you want to play with it, pass a different filename to the "-o" option.
