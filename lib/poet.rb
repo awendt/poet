@@ -21,6 +21,10 @@ module Poet
     end
 
     def bootstrap
+      if File.directory?(options[:dir])
+        $stderr.puts "You're already good to go."
+        Process.exit!(3)
+      end
       FileUtils.mkdir_p(options[:dir])
       FileUtils.mv(options[:bootstrap], options[:dir])
     end
