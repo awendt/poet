@@ -1,4 +1,9 @@
-master
+0.3.1
+
+- fix bootstrapping, opened ticket for Aruba
+  (https://github.com/cucumber/aruba/issues/115)
+
+0.3
 
 - options: Use env var POET_OUTPUT in addition to --output and POET_GLOBDIR in addition to --dir
 

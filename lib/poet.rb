@@ -1,4 +1,5 @@
 require "poet/version"
+require "fileutils"
 
 module Poet
 
