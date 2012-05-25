@@ -28,3 +28,20 @@ Feature: Running the program
     When I run `poet --dir missing`
     Then the output from "poet --dir missing" should contain "missing does not exist"
     And the exit status should not be 0
+
+  Scenario: User wants to organize his config files in folders
+    Given a directory named "customers"
+    And a file named "customers/first" with:
+    """
+    Host customer1
+      User me
+    """
+    And a file named "customers/second" with:
+    """
+    Host customer2
+      User me
+    """
+    When I run `poet`
+    Then the exit status should be 0
+    And the file "ssh_config" should contain "Host customer1"
+    And the file "ssh_config" should contain "Host customer2"

@@ -1,3 +1,7 @@
+master
+
+- let users organize their config files in directories
+
 0.3.1
 
 - fix bootstrapping, opened ticket for Aruba

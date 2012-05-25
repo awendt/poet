@@ -45,8 +45,9 @@ module Poet
         Process.exit!(2)
       end
 
-      files = Dir["#{options[:dir]}/**"].reject do |file|
-        file =~ /\.disabled$/ && !options[:with].include?("#{File.basename(file, '.disabled')}")
+      files = Dir["#{options[:dir]}/**/*"].reject do |file|
+        File.directory?(file) || \
+          file =~ /\.disabled$/ && !options[:with].include?("#{File.basename(file, '.disabled')}")
       end
 
       files -= [options[:ssh_config]]
