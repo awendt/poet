@@ -15,16 +15,17 @@ optparse = OptionParser.new do|opts|
     puts opts
     exit
   end
-  opts.on('-d', '--dir DIR', '') do |dir|
+  opts.on('-d', '--dir DIR', 'Use specified directory instead of ~/.ssh/config.d to collect conf files') do |dir|
     options[:dir] = File.expand_path(dir)
   end
-  opts.on('-o', '--output FILE', '') do |file|
+  opts.on('-o', '--output FILE', 'Generate output in specified file instead of ~/.ssh/config') do |file|
     options[:ssh_config] = file
   end
   opts.on('-v', '--verbose', 'Be verbose') do
     options[:verbose] = true
   end
-  opts.on('--bootstrap [FILE]', '') do |file|
+  opts.on('--bootstrap [FILE]',
+      'Move ~/.ssh/config (or whatever you specified) to ~/.ssh/config.d/ to help you get started') do |file|
     options[:bootstrap] = File.expand_path(file || options[:ssh_config])
   end
   opts.on('-w', '--with CONFIG', 'Include an otherwise disabled config file') do |file|
