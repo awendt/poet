@@ -56,6 +56,7 @@ module Poet
 
       files.sort.each do |file|
         entries << File.read(file)
+        $stdout.puts "Using #{file.gsub(/^\.\//, '')}" if options[:verbose]
       end
 
       File.open(options[:ssh_config], 'w', 0600) do |ssh_config|
