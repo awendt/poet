@@ -1,5 +1,13 @@
 master
 
+- also test against JRuby, Rubinius, and 1.9.2
+
+- running verbosely works again
+
+- extended help
+
+0.4
+
 - let users organize their config files in directories
 
 0.3.1
