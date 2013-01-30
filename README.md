@@ -3,7 +3,7 @@
 # Split your `ssh_config` into separate files!
 
 1. `gem install poet`
-2. `poet --bootstrap`
+2. `poet bootstrap`
 3. Organize files in `~/.ssh/config.d/` any way you want (just remember to re-run `poet` afterwards)
 
 Poet won't touch your existing ssh_config.

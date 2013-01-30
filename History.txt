@@ -1,5 +1,9 @@
 master
 
+- use Thor internally for CLI
+
+- 'bootstrap' is now a subcommand (use `poet bootstrap` instead of `poet --bootstrap`)
+
 - also test against JRuby, Rubinius, and 1.9.2
 
 - running verbosely works again
