@@ -71,7 +71,16 @@ class PoetCLI < Thor
       ssh_config.puts("# Create or modify files under #{options[:dir]} instead")
       ssh_config.puts(entries.join("\n"))
     end
+  end
 
+  desc "edit FILE", "Open FILE under ~/.ssh/config.d/ in your favorite $EDITOR"
+  def edit(file)
+    if ENV['EDITOR'].to_s.empty?
+      $stderr.puts "$EDITOR is empty. Could not determine your favorite editor."
+      Process.exit!(4)
+    end
+    system("#{ENV['EDITOR']} #{File.join(options[:dir], file)}")
+    create
   end
 
 end

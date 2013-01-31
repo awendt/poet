@@ -1,5 +1,7 @@
 master
 
+- edit files under ~/.ssh/config.d/ directly with `poet edit some_ssh_config_file`
+
 - use Thor internally for CLI
 
 - 'bootstrap' is now a subcommand (use `poet bootstrap` instead of `poet --bootstrap`)
