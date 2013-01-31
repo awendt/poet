@@ -2,9 +2,19 @@
 
 # Split your `ssh_config` into separate files!
 
-1. `gem install poet`
-2. `poet bootstrap`
-3. Organize files in `~/.ssh/config.d/` any way you want (just remember to re-run `poet` afterwards)
+## Getting started
+
+    $ gem install poet
+    $ poet bootstrap
+
+This will move your `~/.ssh/config` into `~/.ssh/config.d/` and create an identical `~/.ssh/config`.
+Organize files in `~/.ssh/config.d/` any way you want (just remember to re-run `poet` afterwards).
+
+To edit `~/.ssh/config.d/some_file`, run `poet edit some_file`.
+Poet will open your favorite $EDITOR and automatically create a new `~/.ssh/config`
+when you quit the editor.
+
+## Advanced usage
 
 Poet won't touch your existing ssh_config.
 If you want to play with it, pass a different filename to the "-o" option.
