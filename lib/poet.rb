@@ -79,8 +79,9 @@ class PoetCLI < Thor
       $stderr.puts "$EDITOR is empty. Could not determine your favorite editor."
       Process.exit!(4)
     end
-    system("#{ENV['EDITOR']} #{File.join(options[:dir], file)}")
-    create
+    filepath = File.join(options[:dir], file)
+    system("#{ENV['EDITOR']} #{filepath}")
+    create if File.exists?(filepath)
   end
 
 end

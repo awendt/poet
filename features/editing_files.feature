@@ -20,3 +20,13 @@ Feature: Editing files
     And I run `poet edit no_editor`
     Then the output from "poet edit no_editor" should contain "$EDITOR is empty. Could not determine your favorite editor."
     And the exit status should not be 0
+
+  Scenario: Do not re-create ssh_config when no file was created
+    Given a file named "important" with:
+    """
+    This is absolutely vital information
+    """
+    When I set env variable "EDITOR" to "/bin/cat"
+    And I run `poet edit missing -o important`
+    Then the output from "poet edit missing -o important" should not contain "Found hand-crafted ssh_config"
+    And the exit status should be 0
