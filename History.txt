@@ -1,5 +1,7 @@
 master
 
+- drop support for Ruby 1.8
+
 - edit files under ~/.ssh/config.d/ directly with `poet edit some_ssh_config_file`
 
 - use Thor internally for CLI
