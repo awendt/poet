@@ -1,3 +1,3 @@
 module Poet
-  VERSION = "0.4"
+  VERSION = "0.5"
 end
