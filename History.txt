@@ -1,5 +1,7 @@
 master
 
+- `poet edit` re-generates files only when they are actually changed
+
 0.6
 
 - show original file where stanzas came from (thanks @sethiele)

@@ -81,8 +81,9 @@ class PoetCLI < Thor
       Process.exit!(4)
     end
     filepath = File.join(options[:dir], file)
+    checksum_before = Digest::MD5.file(filepath) rescue '0'*16
     system("#{ENV['EDITOR']} #{filepath}")
-    create if File.exists?(filepath)
+    create if File.exists?(filepath) && checksum_before != Digest::MD5.file(filepath)
   end
 
 end

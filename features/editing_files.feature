@@ -30,3 +30,43 @@ Feature: Editing files
     And I run `poet edit missing -o important`
     Then the output from "poet edit missing -o important" should not contain "Found hand-crafted ssh_config"
     And the exit status should be 0
+
+  Scenario: ssh_config is re-generated after changing files
+    Given a file named "file1" with:
+    """
+    Host one
+      User me
+    """
+    And a file named "file2" with:
+    """
+    Host two
+      User me
+    """
+    And a file named "important" with:
+    """
+    This is absolutely vital information
+    """
+    When I set env variable "EDITOR" to "mv file2"
+    And I run `poet edit file1 -o important`
+    Then the output from "poet edit file1 -o important" should contain "Found hand-crafted ssh_config"
+    And the exit status should not be 0
+
+  Scenario: ssh_config is not re-generated after not changing files
+    Given a file named "file1" with:
+    """
+    Host one
+      User me
+    """
+    And a file named "file2" with:
+    """
+    Host two
+      User me
+    """
+    And a file named "important" with:
+    """
+    This is absolutely vital information
+    """
+    When I set env variable "EDITOR" to "/bin/cat"
+    And I run `poet edit file1 -o important`
+    Then the output from "poet edit file1 -o important" should not contain "Found hand-crafted ssh_config"
+    And the exit status should be 0
