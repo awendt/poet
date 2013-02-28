@@ -1,5 +1,7 @@
 master
 
+- test against Ruby 2.0
+
 - `poet edit` re-generates files only when they are actually changed
 
 0.6
