@@ -1,5 +1,7 @@
 master
 
+- list config files with `poet ls` or `poet ls --tree`
+
 - `poet edit` re-generates files only when they are actually changed
 
 0.6
