@@ -102,7 +102,7 @@ class PoetCLI < Thor
   end
 
   desc "ls", "List all configuration files"
-  option :tree, aliases: '-t', type: :boolean
+  option :tree, aliases: '-t', type: :boolean, desc: 'Print tree of config dir'
   def ls
     if options[:tree]
       print_tree(options[:dir])
