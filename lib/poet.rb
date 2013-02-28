@@ -86,4 +86,9 @@ class PoetCLI < Thor
     create if File.exists?(filepath) && checksum_before != Digest::MD5.file(filepath)
   end
 
+  desc "ls", "List all configuration files"
+  def ls
+    files = Dir["#{options[:dir]}/**/*"].reject { |file| File.directory?(file) }
+    puts files.map{|filename| filename[options[:dir].size+1..-1]}.join("\n")
+  end
 end
