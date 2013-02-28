@@ -70,3 +70,13 @@ Feature: Editing files
     And I run `poet edit file1 -o important`
     Then the output from "poet edit file1 -o important" should not contain "Found hand-crafted ssh_config"
     And the exit status should be 0
+
+  Scenario: ssh_config includes disabled file after editing it
+    Given a file named "homeoffice.disabled" with:
+    """
+    Host normally_disabled
+      User me
+    """
+    When I poet-edit file "homeoffice.disabled" and change something
+    Then the exit status should be 0
+    And the file "ssh_config" should contain "Host normally_disabled"
