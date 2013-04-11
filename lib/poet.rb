@@ -27,7 +27,7 @@ class PoetCLI < Thor
 
   no_tasks do
     def print_tree(dir = ".", nesting = 0)
-      Dir.foreach(dir) do |entry|
+      Dir.entries(dir).sort.each do |entry|
         next if entry =~ /^\.{1,2}/   # Ignore ".", "..", or hidden files
         puts "|   " * nesting + "|-- #{entry}"
         if File.stat(d = "#{dir}#{File::SEPARATOR}#{entry}").directory?
@@ -107,7 +107,7 @@ class PoetCLI < Thor
     if options[:tree]
       print_tree(options[:dir])
     else
-      files = Dir["#{options[:dir]}/**/*"].reject { |file| File.directory?(file) }
+      files = Dir["#{options[:dir]}/**/*"].sort.reject { |file| File.directory?(file) }
       puts files.map{|filename| filename[options[:dir].size+1..-1]}.join("\n")
     end
   end
