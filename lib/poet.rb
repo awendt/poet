@@ -32,7 +32,7 @@ class PoetCLI < Thor
       Process.exit!(3)
     end
     FileUtils.mkdir_p(options[:dir])
-    FileUtils.mv(file, options[:dir])
+    FileUtils.mv(file, options[:dir]) if File.file?(file)
     create
   end
 
