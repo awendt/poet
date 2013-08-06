@@ -61,6 +61,7 @@ class PoetCLI < Thor
     entries = []
 
     files.sort.each do |file|
+      entries << "\n# Located in " + file.to_s
       entries << File.read(file)
       $stdout.puts "Using #{file.gsub(/^\.\//, '')}" if options[:verbose]
     end
