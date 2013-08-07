@@ -1,5 +1,11 @@
 master
 
+0.6
+
+- show original file where stanzas came from (thanks @sethiele)
+
+- check for existence of ssh config file when bootstrapping (thanks @jayed)
+
 0.5
 
 - drop support for Ruby 1.8
