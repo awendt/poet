@@ -1,6 +1,6 @@
 master
 
-- test against Ruby 2.0
+- drop suport for Ruby 1.9.2, officially support 2.0
 
 - `poet edit` re-generates files only when they are actually changed
 
