@@ -1,5 +1,13 @@
 master
 
+- drop suport for Ruby 1.9.2
+
+- test against Ruby 2.0
+
+- list config files with `poet ls` or `poet ls --tree`
+
+- `poet edit` re-generates files only when they are actually changed
+
 0.6
 
 - show original file where stanzas came from (thanks @sethiele)
