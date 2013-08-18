@@ -26,6 +26,8 @@ Every now and then, when you do need it, run `poet --with CONFIG` to explicitly 
 `CONFIG.disabled` in your generated ssh_config. You can even include several by running several
 `--with` options or using `--with CONFIG1,CONFIG2`.
 
+Use `poet ls` (or `poet ls --tree`) to see a list (or tree) of all your config files.
+
 ## Note on Patches/Pull Requests
 
 * Fork the project.
