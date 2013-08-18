@@ -25,6 +25,18 @@ class PoetCLI < Thor
       aliases: '-v',
       type: :boolean
 
+  no_tasks do
+    def print_tree(dir = ".", nesting = 0)
+      Dir.entries(dir).sort.each do |entry|
+        next if entry =~ /^\.{1,2}/   # Ignore ".", "..", or hidden files
+        puts "|   " * nesting + "|-- #{entry}"
+        if File.stat(d = "#{dir}#{File::SEPARATOR}#{entry}").directory?
+          print_tree(d, nesting + 1)
+        end
+      end
+    end
+  end
+
   desc "bootstrap [FILE]",
       "Move ~/.ssh/config (or whatever you specified) to ~/.ssh/config.d/ to help you get started"
   def bootstrap(file=nil)
@@ -89,4 +101,14 @@ class PoetCLI < Thor
     create if File.exists?(filepath) && checksum_before != Digest::MD5.file(filepath)
   end
 
+  desc "ls", "List all configuration files"
+  option :tree, aliases: '-t', type: :boolean, desc: 'Print tree of config dir'
+  def ls
+    if options[:tree]
+      print_tree(options[:dir])
+    else
+      files = Dir["#{options[:dir]}/**/*"].sort.reject { |file| File.directory?(file) }
+      puts files.map{|filename| filename[options[:dir].size+1..-1]}.join("\n")
+    end
+  end
 end
