@@ -1,5 +1,9 @@
 master
 
+- drop suport for Ruby 1.9.2, officially support 2.0
+
+- `poet edit` re-generates files only when they are actually changed
+
 0.6
 
 - show original file where stanzas came from (thanks @sethiele)
