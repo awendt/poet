@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/awendt/poet"
   s.summary     = %q{Poet concatenates stanzas}
   s.description = %q{Split your longish ~/.ssh/config into files in ~/.ssh/config.d/ and let poet join them for you.}
+  s.license     = "MIT"
 
   s.rubyforge_project = "poet"
 

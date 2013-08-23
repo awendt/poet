@@ -1,5 +1,7 @@
 master
 
+0.7
+
 - list config files with `poet ls` or `poet ls --tree`
 
 - drop suport for Ruby 1.9.2, officially support 2.0
