@@ -50,6 +50,16 @@ class PoetCLI < Thor
     create
   end
 
+  desc "completeme", "Install completion for Bash into ~/.bash_completion.d/"
+  def completeme
+    completion_dir = File.expand_path("~/.bash_completion.d/")
+    FileUtils.mkdir_p(completion_dir)
+    say "Copying completion file to #{dest}"
+    FileUtils.cp(File.expand_path('../../completion/poet.bash', __FILE__), completion_dir)
+    say %Q(To use the completion, execute this command:\n
+    echo 'source #{File.join(completion_dir, 'poet.bash')}' >> ~/.bashrc)
+  end
+
   desc "", "Concatenate all host stanzas under ~/.ssh/config.d/ into a single ~/.ssh/config"
   def create
     if !File.directory?(options[:dir])
@@ -77,7 +87,7 @@ class PoetCLI < Thor
     files.sort.each do |file|
       entries << "\n# Located in " + file.to_s
       entries << File.read(file)
-      $stdout.puts "Using #{file.gsub(/^\.\//, '')}" if options[:verbose]
+      $stdout.puts "Using #{file.gsub(/^\.\//, '')}" if options.verbose?
     end
 
     File.open(options[:output], 'w', 0600) do |ssh_config|
@@ -104,7 +114,7 @@ class PoetCLI < Thor
   desc "ls", "List all configuration files"
   option :tree, aliases: '-t', type: :boolean, desc: 'Print tree of config dir'
   def ls
-    if options[:tree]
+    if options.tree?
       print_tree(options[:dir])
     else
       files = Dir["#{options[:dir]}/**/*"].sort.reject { |file| File.directory?(file) }

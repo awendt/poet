@@ -1,5 +1,9 @@
 master
 
+0.8
+
+- opt-in bash completion (beware: a little sluggish on 1.9.3)
+
 0.7
 
 - list config files with `poet ls` or `poet ls --tree`
