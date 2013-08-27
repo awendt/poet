@@ -21,6 +21,16 @@ Poet won't touch your existing ssh_config.
 If you want to play with it, pass a different filename to the "-o" option.
 Or move your existing config out of the way.
 
+### Bash completion
+
+A Bash-compatible completion script is available for all commands and some of their arguments, most
+notably for `poet edit`.
+
+Run `poet completeme` to copy the script to `$HOME/.bash_completion.d/`.
+The command outputs instructions how to properly source the file.
+
+### Un-ignoring files
+
 Stanzas under `~/.ssh/config.d/` with an extension of .disabled are ignored by default.
 Every now and then, when you do need it, run `poet --with CONFIG` to explicitly include
 `CONFIG.disabled` in your generated ssh_config. You can even include several by running several
