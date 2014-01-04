@@ -1,6 +1,7 @@
 require "poet/version"
 require "thor"
 require "fileutils"
+require "digest/md5"
 
 class PoetCLI < Thor
 
