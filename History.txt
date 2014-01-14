@@ -1,5 +1,9 @@
 master
 
+0.8.1
+
+- fixed bug "uninitialized constant PoetCLI::Digest" on 2.0 (thanks @yagooar)
+
 0.8
 
 - opt-in bash completion (beware: a little sluggish on 1.9.3)
