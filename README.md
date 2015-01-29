@@ -1,5 +1,5 @@
-[![Build Status](https://secure.travis-ci.org/awendt/poet.png)](http://travis-ci.org/awendt/poet)
-[![Gem Version](https://badge.fury.io/rb/poet.png)](http://badge.fury.io/rb/poet)
+[![Build Status](https://travis-ci.org/awendt/poet.svg?branch=master)](https://travis-ci.org/awendt/poet)
+[![Gem Version](https://badge.fury.io/rb/poet.svg)](http://badge.fury.io/rb/poet)
 
 # Split your `ssh_config` into separate files!
 
