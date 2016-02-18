@@ -6,4 +6,4 @@ Feature: Correct permissions
       User whatever
     """
     When I run `poet`
-    Then the file "ssh_config" should not be world-accessible
+    Then the file "ssh_config" should have permissions "0600"
