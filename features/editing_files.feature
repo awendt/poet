@@ -5,7 +5,7 @@ Feature: Editing files
     Host none
       User me
     """
-    When I set env variable "EDITOR" to ""
+    When I set the environment variable "EDITOR" to ""
     And I run `poet edit no_editor`
     Then the output from "poet edit no_editor" should contain "$EDITOR is empty. Could not determine your favorite editor."
     And the exit status should not be 0
@@ -15,9 +15,10 @@ Feature: Editing files
     """
     This is absolutely vital information
     """
-    When I set env variable "EDITOR" to "/bin/cat"
+    When I set the environment variable "EDITOR" to "/bin/cat"
     And I run `poet edit missing -o important`
     Then the output from "poet edit missing -o important" should not contain "Found hand-crafted ssh_config"
+    And the file "important" should contain "This is absolutely vital information"
     And the exit status should be 0
 
   Scenario: ssh_config is re-generated after changing files
