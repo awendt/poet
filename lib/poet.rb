@@ -11,6 +11,15 @@ module Poet
       @dir = options.delete(:dir)
     end
 
+    def bootstrap(file)
+      if File.directory?(@dir)
+        $stderr.puts "You're already good to go."
+        Process.exit!(3)
+      end
+      FileUtils.mkdir_p(@dir)
+      FileUtils.mv(file, @dir) if File.file?(file)
+    end
+
     def ls(show_tree: false)
       if show_tree
         print_tree(@dir)
@@ -62,13 +71,7 @@ class PoetCLI < Thor
   desc "bootstrap [FILE]",
       "Move ~/.ssh/config (or whatever you specified) to ~/.ssh/config.d/ to help you get started"
   def bootstrap(file=nil)
-    file ||= File.expand_path(file || options[:output])
-    if File.directory?(options[:dir])
-      $stderr.puts "You're already good to go."
-      Process.exit!(3)
-    end
-    FileUtils.mkdir_p(options[:dir])
-    FileUtils.mv(file, options[:dir]) if File.file?(file)
+    Poet::Runtime.new(dir: options[:dir]).bootstrap(File.expand_path(file || options[:output]))
     create
   end
 
