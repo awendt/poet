@@ -1,13 +1,10 @@
-When /^I set env variable "(\w+)" to "([^"]*)"$/ do |var, value|
-  ENV[var] = value
-end
-
 When /^I poet\-edit file "([^"]*)" and change something$/ do |filename|
-  ENV['EDITOR'] = File.expand_path('../../../editors/double_space.rb', __FILE__)
+  double_space = File.expand_path('../../../editors/double_space.rb', __FILE__)
+  step %(I set the environment variable "EDITOR" to "#{double_space}")
   step "I run `poet edit #{filename}`"
 end
 
 When /^I poet\-edit file "([^"]*)" without changing something$/ do |filename|
-  ENV['EDITOR'] = "/bin/cat"
+  step 'I set the environment variable "EDITOR" to "/bin/cat"'
   step "I run `poet edit #{filename}`"
 end
