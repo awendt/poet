@@ -46,7 +46,8 @@ module Poet
       filepath = File.join(@dir, file)
       checksum_before = Digest::MD5.file(filepath) rescue '0'*16
       system("#{ENV['EDITOR']} #{filepath}")
-      File.exists?(filepath) && checksum_before != Digest::MD5.file(filepath)
+      needs_update = File.exists?(filepath) && checksum_before != Digest::MD5.file(filepath)
+      create([file]) if needs_update
     end
 
     def ls(show_tree: false)
@@ -152,9 +153,7 @@ class PoetCLI < Thor
       $stderr.puts "$EDITOR is empty. Could not determine your favorite editor."
       Process.exit!(4)
     end
-    poet = Poet::Runtime.new(dir: options[:dir], output: options[:output])
-    file_changed = poet.edit(file)
-    poet.create([file]) if file_changed
+    Poet::Runtime.new(dir: options[:dir], output: options[:output]).edit(file)
   end
 
   desc "ls", "List all configuration files"
