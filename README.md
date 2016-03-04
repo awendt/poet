@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/awendt/poet.svg?branch=master)](https://travis-ci.org/awendt/poet)
 [![Gem Version](https://badge.fury.io/rb/poet.svg)](http://badge.fury.io/rb/poet)
+[![Dependency Status](https://gemnasium.com/awendt/poet.svg)](https://gemnasium.com/awendt/poet)
 
 # Split your `ssh_config` into separate files!
 
