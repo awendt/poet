@@ -31,13 +31,11 @@ module Poet
       raise Poet::HandCraftedConfigFound if File.exists?(@output) && File.new(@output).gets != "#{MAGIC_LINE}\n"
       puts "Found generated ssh_config under #{@output}. Overwriting..."
 
-      entries = []
       # build content from list of files
-      files(files_to_include).sort.each do |file|
-        entries << "\n# Located in " + file.to_s
-        entries << File.read(file)
+      entries = files(files_to_include).sort.map do |file|
         yield(file.gsub(/^\.\//, '')) if block_given?
-      end
+        ["\n# Located in #{file}", File.read(file)]
+      end.flatten
 
       write_to_ssh_config(entries)
     end
