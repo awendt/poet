@@ -8,7 +8,7 @@ module Poet
   class AlreadyBootstrapped < StandardError; end
   class EmptyEditorVar < StandardError; end
   class HandCraftedConfigFound < StandardError; end
-  class SourceDirectoryNotReadable < StandardError; end
+  class NotBootstrapped < StandardError; end
 
   class Runtime
 
@@ -21,16 +21,16 @@ module Poet
     end
 
     def bootstrap(file)
-      raise Poet::AlreadyBootstrapped if File.directory?(@dir)
+      raise Poet::AlreadyBootstrapped if source_dir_exists?
 
       FileUtils.mkdir_p(@dir)
       FileUtils.mv(file, @dir) if File.file?(file)
     end
 
     def create(files_to_include = nil, &block)
-      raise Poet::SourceDirectoryNotReadable unless File.directory?(@dir)
-      raise Poet::HandCraftedConfigFound if File.exists?(@output) && File.new(@output).gets != "#{MAGIC_LINE}\n"
-      puts "Found generated ssh_config under #{@output}. Overwriting..."
+      raise Poet::NotBootstrapped unless source_dir_exists?
+      raise Poet::HandCraftedConfigFound if hand_crafted_config?
+      puts "Found generated ssh_config under #{@output}. Overwriting..." if config_exists?
 
       # build content from list of files
       entries = files(files_to_include).sort.map do |file|
@@ -61,6 +61,22 @@ module Poet
     end
 
     private
+
+    def source_dir_exists?
+      File.directory?(@dir)
+    end
+
+    def hand_crafted_config?
+      config_exists? && !has_magic_line?
+    end
+
+    def config_exists?
+      File.exists?(@output)
+    end
+
+    def has_magic_line?
+      File.new(@output).gets == "#{MAGIC_LINE}\n"
+    end
 
     def print_tree(dir = ".", nesting = 0)
       Dir.entries(dir).sort.each do |entry|
@@ -140,7 +156,7 @@ class PoetCLI < Thor
       $stdout.puts "Using #{file}" if options.verbose?
     end
 
-  rescue Poet::SourceDirectoryNotReadable
+  rescue Poet::NotBootstrapped
     $stderr.puts "#{options[:dir]} does not exist or is not a directory"
     Process.exit!(1)
   rescue Poet::HandCraftedConfigFound
