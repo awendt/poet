@@ -74,7 +74,7 @@ module Poet
 
     def files(files_to_include = nil)
       whitelist = files_to_include || @force_include.split(',').map{|file| "#{file}.disabled"}
-      files = Dir["#{@dir}/**{,/*/**}/*"].reject do |file|
+      files = Dir["#{@dir}/**/*"].reject do |file|
         File.directory?(file) || \
           file =~ /\.disabled$/ && !whitelist.include?(File.basename(file))
       end
