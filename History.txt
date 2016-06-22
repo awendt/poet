@@ -1,5 +1,7 @@
 master
 
+- drop support for Ruby 1.9, officially support Ruby 2.2
+
 0.8.1
 
 - fixed bug "uninitialized constant PoetCLI::Digest" on 2.0 (thanks @yagooar)
