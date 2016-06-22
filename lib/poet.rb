@@ -4,7 +4,7 @@ require "thor"
 require "fileutils"
 require "digest/md5"
 
-class PoetCLI < Thor
+class Poet::CLI < Thor
 
   default_task :create
   class_option :dir,
