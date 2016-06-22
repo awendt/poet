@@ -6,8 +6,9 @@ require "digest/md5"
 module Poet
 
   class AlreadyBootstrapped < StandardError; end
-  class SourceDirectoryNotReadable < StandardError; end
+  class EmptyEditorVar < StandardError; end
   class HandCraftedConfigFound < StandardError; end
+  class SourceDirectoryNotReadable < StandardError; end
 
   class Runtime
 
@@ -41,6 +42,8 @@ module Poet
     end
 
     def edit(file)
+      raise Poet::EmptyEditorVar if ENV['EDITOR'].to_s.empty?
+
       filepath = File.join(@dir, file)
       checksum_before = Digest::MD5.file(filepath) rescue '0'*16
       system("#{ENV['EDITOR']} #{filepath}")
@@ -147,11 +150,10 @@ class PoetCLI < Thor
 
   desc "edit FILE", "Open FILE under ~/.ssh/config.d/ in your favorite $EDITOR"
   def edit(file)
-    if ENV['EDITOR'].to_s.empty?
-      $stderr.puts "$EDITOR is empty. Could not determine your favorite editor."
-      Process.exit!(4)
-    end
     Poet::Runtime.new(dir: options[:dir], output: options[:output]).edit(file)
+  rescue Poet::EmptyEditorVar
+    $stderr.puts "$EDITOR is empty. Could not determine your favorite editor."
+    Process.exit!(4)
   end
 
   desc "ls", "List all configuration files"
