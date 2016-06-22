@@ -28,12 +28,12 @@ module Poet
       puts "Found generated ssh_config under #{@output}. Overwriting..." if config_exists?
 
       # build content from list of files
-      entries = files(files_to_include).sort.map do |file|
+      new_config = files(files_to_include).sort.map do |file|
         yield(file.gsub(/^\.\//, '')) if block_given?
         ["\n# Located in #{file}", File.read(file)]
       end.flatten
 
-      write_to_ssh_config(entries)
+      write_to_ssh_config(new_config)
     end
 
     def edit(file)
