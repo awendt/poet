@@ -13,14 +13,14 @@ module Poet
     class_option :with,
         desc: 'Include an otherwise disabled config file',
         aliases: '-w',
-        default: ""
+        default: ''
     class_option :verbose,
         desc: 'Be verbose',
         aliases: '-v',
         type: :boolean
 
-    desc "bootstrap [FILE]",
-        "Move ~/.ssh/config (or whatever you specified) to ~/.ssh/config.d/ to help you get started"
+    desc 'bootstrap [FILE]',
+        'Move ~/.ssh/config (or whatever you specified) to ~/.ssh/config.d/ to help you get started'
     def bootstrap(file=nil)
       Poet::Runtime.new(dir: options[:dir]).bootstrap(File.expand_path(file || options[:output]))
       create
@@ -29,9 +29,9 @@ module Poet
       Process.exit!(3)
     end
 
-    desc "completeme", "Install completion for Bash into ~/.bash_completion.d/"
+    desc 'completeme', 'Install completion for Bash into ~/.bash_completion.d/'
     def completeme
-      completion_dir = File.expand_path("~/.bash_completion.d/")
+      completion_dir = File.expand_path('~/.bash_completion.d/')
       FileUtils.mkdir_p(completion_dir)
       say "Copying completion file to #{completion_dir}"
       FileUtils.cp(File.expand_path('../../completion/poet.bash', __FILE__), completion_dir)
@@ -39,7 +39,7 @@ module Poet
       echo 'source #{File.join(completion_dir, 'poet.bash')}' >> ~/.bashrc)
     end
 
-    desc "", "Concatenate all host stanzas under ~/.ssh/config.d/ into a single ~/.ssh/config"
+    desc '', 'Concatenate all host stanzas under ~/.ssh/config.d/ into a single ~/.ssh/config'
     def create
       runtime_opts = { dir: options[:dir], force_include: options[:with], output: options[:output] }
       Poet::Runtime.new(runtime_opts).create do |file|
@@ -54,15 +54,15 @@ module Poet
       Process.exit!(2)
     end
 
-    desc "edit FILE", "Open FILE under ~/.ssh/config.d/ in your favorite $EDITOR"
+    desc 'edit FILE', 'Open FILE under ~/.ssh/config.d/ in your favorite $EDITOR'
     def edit(file)
       Poet::Runtime.new(dir: options[:dir], output: options[:output]).edit(file)
     rescue Poet::EmptyEditorVar
-      $stderr.puts "$EDITOR is empty. Could not determine your favorite editor."
+      $stderr.puts '$EDITOR is empty. Could not determine your favorite editor.'
       Process.exit!(4)
     end
 
-    desc "ls", "List all configuration files"
+    desc 'ls', 'List all configuration files'
     option :tree, aliases: '-t', type: :boolean, desc: 'Print tree of config dir'
     def ls
       Poet::Runtime.new(dir: options[:dir]).ls(show_tree: options.tree?)

@@ -1,6 +1,6 @@
-require "thor"
-require "poet/cli"
-require "poet/runtime"
-require "poet/version"
-require "fileutils"
-require "digest/md5"
+require 'thor'
+require 'poet/cli'
+require 'poet/runtime'
+require 'poet/version'
+require 'fileutils'
+require 'digest/md5'
