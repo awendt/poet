@@ -35,7 +35,7 @@ module Poet
       FileUtils.mkdir_p(completion_dir)
       say "Copying completion file to #{completion_dir}"
       FileUtils.cp(File.expand_path('../../completion/poet.bash', __FILE__), completion_dir)
-      say %Q(To use the completion, execute this command:\n
+      say %(To use the completion, execute this command:\n
       echo 'source #{File.join(completion_dir, 'poet.bash')}' >> ~/.bashrc)
     end
 
