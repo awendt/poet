@@ -101,6 +101,7 @@ module Poet
         ssh_config.puts(entries.join("\n"))
       end
     end
+
   end
 
 end

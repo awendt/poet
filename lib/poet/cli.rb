@@ -67,6 +67,7 @@ module Poet
     def ls
       Poet::Runtime.new(dir: options[:dir]).ls(show_tree: options.tree?)
     end
+
   end
 
 end

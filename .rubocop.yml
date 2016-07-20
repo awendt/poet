@@ -8,3 +8,8 @@ Style/EmptyLinesAroundModuleBody:
   Description: Keeps track of empty lines around module bodies.
   Enabled: true
   EnforcedStyle: empty_lines
+
+Style/EmptyLinesAroundClassBody:
+  Description: Keeps track of empty lines around class bodies.
+  Enabled: true
+  EnforcedStyle: empty_lines
