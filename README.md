@@ -2,6 +2,28 @@
 [![Gem Version](https://badge.fury.io/rb/poet.svg)](http://badge.fury.io/rb/poet)
 [![Dependency Status](https://gemnasium.com/awendt/poet.svg)](https://gemnasium.com/awendt/poet)
 
+# Native support in OpenSSH 7.3
+
+[OpenSSH 7.3](http://www.openssh.com/txt/release-7.3) was released on August 1, 2016.
+That version features an `Include` directive for ssh_config(5) files which is
+[documented as follows](http://man.openbsd.org/ssh_config):
+
+> Include the specified configuration file(s). Multiple pathnames may be specified
+> and each pathname may contain glob(3) wildcards and, for user configurations,
+> shell-like “~” references to user home directories. Files without absolute paths are
+> assumed to be in ~/.ssh if included in a user configuration file or /etc/ssh if
+> included from the system configuration file. Include directive may appear inside a
+> Match or Host block to perform conditional inclusion.
+
+This covers most use cases `poet` was designed for.
+
+## What does this all mean?
+
+I might stop maintaining poet in the future.
+Feel free to reach out to convince me otherwise.
+
+---
+
 # Split your `ssh_config` into separate files!
 
 ## Getting started
