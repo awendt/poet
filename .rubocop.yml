@@ -1,0 +1,15 @@
+Style/StringLiterals:
+  Description: Checks if uses of quotes match the configured preference.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-string-literals
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Style/EmptyLinesAroundModuleBody:
+  Description: Keeps track of empty lines around module bodies.
+  Enabled: true
+  EnforcedStyle: empty_lines
+
+Style/EmptyLinesAroundClassBody:
+  Description: Keeps track of empty lines around class bodies.
+  Enabled: true
+  EnforcedStyle: empty_lines

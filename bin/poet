@@ -2,4 +2,4 @@
 
 require 'poet'
 
-PoetCLI.start(ARGV)
+Poet::CLI.start(ARGV)
